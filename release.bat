@@ -7,6 +7,13 @@ set /p NOTES="Release notes: "
 echo.
 echo Creating release v%VERSION%...
 
+git add ScreenLimits_Setup.exe
+git commit -m "release v%VERSION%"
+if errorlevel 1 (
+    echo Commit failed.
+    exit /b 1
+)
+
 git tag v%VERSION%
 if errorlevel 1 (
     echo Tag already exists or git error.
